@@ -1,0 +1,90 @@
+---
+title: "Quarto basics"
+author: "Chris Johnson"
+
+format:
+  html:
+    toc: true
+    toc_float: true
+
+execute:
+  eval: false
+---
+
+## Prerequisites
+
+This document assumes you have RStudio installed. There are three steps to get up and running with Quarto: Quarto itself, a command line tool; $\LaTeX$; and `{quarto}` (the R package).
+
+First, install [Quarto for Windows](https://quarto.org/docs/get-started/index.html) from Quarto's website.
+
+Any modern $\LaTeX$ install will work, however TinyTeX is a great solution for Quarto. Submit `quarto install tool tinytex` to the Quarto command line interface (CLI).
+
+In RStudio, install `{quarto}` with `install.packages(packages = "quarto")`. `{quarto}` provides an R interface to the Quarto CLI.
+
+## Quarto configuration
+
+You may wish for Quarto to render your content on save.
+
+## Quarto markdown document
+
+Quarto files have the extension `qmd`, which stands for *Quarto markdown document*.
+
+## Create document-based projects
+
+A qmd file can be created by opening the RStudio Command Palette with Ctrl + Shift + P and searching "Create a new Quarto document" or via the main menu via File > New File > Quarto Document...
+
+## Document configuration (YAML header)
+
+The YAML header is for specifying document metadata as well as formatting options, both of which are provided as key&ndash;value pairs. Indentation conveys hierarchy. The key&ndash;value pairs for formatting can be specified at the root level (completely left-justified) to apply to all output requests, or indented following the output format request to apply to that specific format.
+
+Commonly used document metadata keys are
+
+* `title`
+* `subtitle`
+* `author`
+* `editor` (visual or source)
+
+### Formatting
+
+The format is specified with the `format` key. Output formats include HTML, PDF, and MS Word. There are also many output format types which include document, interactive document, presentation, website, and book.
+
+To see all keys and values for a particular format, visit the Quarto Reference on the Quarto website. One common format is [HTML](https://quarto.org/docs/reference/formats/html.html).
+
+## Editing
+
+RStudio provides two editing modes: Source and Visual. Source allows you to edit your document using R Markdown syntax, where Visual provides a GUI interface with keyboard shortcuts for formatting. There are buttons in RStudio for toggling, but you can also use Ctrl + Shift + F4 if needed.
+
+### Code chunks
+
+Code chunk options are provided one per line in the body of the code chunk, starting with the hashpipe `#|` followed by the key&ndash;value pair.
+
+## Publishing
+
+To render the qmd, use `quarto::quarto_publish_doc()`. `{knitr}` executes all code chunks in the qmd which results in an md file with all the code and output. pandoc then renders the md file to the final output format.
+
+## Creating other Quarto projects
+
+Other projects require additional project infrastructure, and those include websites, blogs, and books.
+
+* `quarto create-project mysite --type website`
+* `quarto create-project myblog --type website:blog`
+* `quarto create-project mybook --type book`
+
+## How to create a blog
+
+`_quarto.yml` is the project file. `index.qmd` is the home page. `about.qmd` is the about page. `posts/` is where posts go. Shared options for posts are in `posts/_metadata.yml`. `styles.css` is for customizing the blog.
+
+## Quarto CLI
+
+To see the available Quarto commands, submit `quarto -h` or `quarto --help`. To see the help for a command named `be-awesome`, submit `quarto be-awesome -h` or `quarto be-awesome --help`.
+
+## Workflow
+
+1. Create a repo on GitHub.
+2. Clone the repo.
+3. Open RStudio and create a new project, associating it with an existing directory.
+4. Use the Quarto CLI to create the Quarto project files.
+5. Edit.
+6. Render.
+7. Publish to Quarto.
+8. Push changes to GitHub.
