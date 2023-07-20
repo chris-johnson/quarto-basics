@@ -88,3 +88,10 @@ To see the available Quarto commands, submit `quarto -h` or `quarto --help`. To 
 6. Render.
 7. Publish to Quarto.
 8. Push changes to GitHub.
+
+<!-- Additional info to work in
+https://quarto.org/docs/websites/
+https://quarto.org/docs/publishing/
+https://quarto.org/docs/websites/website-navigation.html
+https://quarto.org/docs/reference/projects/websites.html
+-->
